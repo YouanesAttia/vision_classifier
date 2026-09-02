@@ -8,8 +8,6 @@ ImageFile.LOAD_TRUNCATED_IMAGES = False
 
 data_dir = Path("data")
 
-print("Scanning for corrupt and truncated images (Strict Mode)...")
-
 count = 0
 for root, dirs, files in os.walk(data_dir):
     for file in files:
@@ -26,4 +24,4 @@ for root, dirs, files in os.walk(data_dir):
                 except:
                     pass
 
-print(f"Cleanup complete. Removed {count} bad files.")
+print(f"Removed {count} bad files.")
