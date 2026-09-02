@@ -107,11 +107,10 @@ The following directories are ignored by Git:
 
 ```text
 data/
-models/
 .env/
 ```
 
-You must provide your own dataset and manage model weights locally.
+You must provide your own dataset.
 
 ## 📌 Dataset Structure
 
