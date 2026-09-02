@@ -46,21 +46,22 @@ def test_step(model: torch.nn.Module,
     test_acc = test_acc / len(dataloader)
     return test_loss, test_acc
 
-def train(model: torch.nn.Module, 
+def train_model(model: torch.nn.Module, 
           train_dataloader: torch.utils.data.DataLoader, 
           test_dataloader: torch.utils.data.DataLoader, 
           optimizer: torch.optim.Optimizer,
           loss_fn: torch.nn.Module,
           epochs: int,
           device: torch.device,
-          scheduler: torch.optim.lr_scheduler = None):
+          scheduler: torch.optim.lr_scheduler = None,
+          best_acc: float = 0.0):
     results = {"train_loss": [],
         "train_acc": [],
         "test_loss": [],
         "test_acc": [],
         "lr": []
     }
-    max_acc = 0
+    max_acc = best_acc
     model.to(device)
     for epoch in tqdm(range(epochs)):
         current_lr = optimizer.param_groups[0]['lr']
