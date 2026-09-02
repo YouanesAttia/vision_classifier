@@ -8,7 +8,7 @@ def main():
     data_dir = Path('data')
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     train_dataloader, test_dataloader, classes = data_setup.create_dataloaders(data_dir, batch_size=32)
-    model0 = model.create_model(num_classes=2, freeze_base=True)
+    model0 = model.create_model(num_classes=2, freeze_base=False)
     loss_fn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(params=model0.parameters(), lr=0.01)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
