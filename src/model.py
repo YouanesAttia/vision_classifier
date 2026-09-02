@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torchvision import models
 from torchvision.models import EfficientNet_B0_Weights
+from pathlib import Path
 
 def create_model(num_classes: int, freeze_base: bool = True) -> nn.Module:
     weights = EfficientNet_B0_Weights.DEFAULT
@@ -18,8 +19,12 @@ def create_model(num_classes: int, freeze_base: bool = True) -> nn.Module:
     )
     return model
 
-def save_model(model: nn.Module, path: str) -> None:
-    torch.save(model.state_dict(), path)
+def save_model(model: torch.nn.Module, target_dir: str, model_name: str):
+    target_dir_path = Path(target_dir)
+    target_dir_path.mkdir(parents=True, exist_ok=True)
+    model_save_path = target_dir_path/model_name
+    print(f"Saving model to: {model_save_path}")
+    torch.save(obj=model.state_dict(), f=model_save_path)
 
 def load_model(path: str, num_classes: int) -> nn.Module:
     model = create_model(num_classes, freeze_base=False)
