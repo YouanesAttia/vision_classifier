@@ -4,7 +4,7 @@ from src.predict import predict_image
 from src.model import load_model
 
 st.set_page_config(page_title="Image Classifier", layout="centered")
-st.title("🔍 AI Image Classifier")
+st.title("Cat vs. Dog Image Classifier")
 st.write("Upload an image and let the model classify it.")
 
 model = load_model("models/model.pth", num_classes=2)
