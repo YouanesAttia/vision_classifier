@@ -1,6 +1,5 @@
 import streamlit as st
 from PIL import Image
-import io
 from src.predict import predict_image
 from src.model import load_model
 
