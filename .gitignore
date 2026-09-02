@@ -8,10 +8,6 @@ env/
 ENV/
 
 data/
-models/
-*.pth
-*.pt
-*.ckpt
 
 .vscode/
 .idea/
